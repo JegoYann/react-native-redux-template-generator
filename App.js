@@ -1,24 +1,56 @@
+'use strict';
+
 import React from 'react';
-import { Container } from 'native-base';
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { StatusBar } from 'react-native';
+import { applyMiddleware, createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { Root } from "native-base";
 
-import todoApp from './reducers'
-import Filters from './components/Filters'
-import AddTodo from './containers/AddTodo'
-import VisibleTodoList from './containers/VisibleTodoList'
+import ThunkMiddleware from 'redux-thunk'
+import LoggerMiddleware from 'redux-logger'
+import { NavigatorMiddleware } from './utils/redux'
+import Reducers from './reducers'
 
-let store = createStore(todoApp)
+import Switch from './navigators/root_switch';
+
+let store = createStore(
+  Reducers,
+  applyMiddleware(
+    ThunkMiddleware,
+    NavigatorMiddleware,
+    LoggerMiddleware,
+  )
+);
+
 
 export default class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isReady: false
+    };
+  }
+
+  async componentWillMount() {
+    await Expo.Font.loadAsync({
+      Entypo: require("native-base/Fonts/Entypo.ttf"),
+      Roboto: require("native-base/Fonts/Roboto.ttf"),
+      Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
+      Ionicons: require("native-base/Fonts/Ionicons.ttf")
+    });
+    this.setState({ isReady: true });
+  }
+
   render() {
+    if (!this.state.isReady) {
+      return <Expo.AppLoading />;
+    }
     return (
       <Provider store={store}>
-        <Container style={{padding:20, paddingTop:50, paddingBottom:50}}>
-          <Filters />
-          <VisibleTodoList />
-          <AddTodo />
-        </Container>
+        <Root>
+          <StatusBar hidden={true} />
+          <Switch />
+        </Root>
       </Provider>
     );
   }
