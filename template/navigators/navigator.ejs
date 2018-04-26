@@ -1,0 +1,48 @@
+'use strict';
+
+import React from 'react';
+
+<% if (type === 'switch'){ %>
+<%- "import { SwitchNavigator } from 'react-navigation';" %>
+<% } else if (type === 'tab') { %>
+<%- "import { TabNavigator } from 'react-navigation';" %>
+<% } else if (type === 'drawer') { %>
+<%- "import { DrawerNavigator } from 'react-navigation';" %>
+<% } else if (type === 'stack') { %>
+<%- "import { StackNavigator } from 'react-navigation';" %>
+<% } %>
+
+
+<% routes.forEach(route => { %>
+<% if (route.type === 'screen'){ %>
+<%- "import "+route.key+" from '../smart-components/"+route.viewKey+"';" %>
+<% } else {%>
+<%- "import "+route.key+" from './"+route.key+"';" %>
+<% }%>
+<% }); %>
+<% if (locals.sideBarContent){ %>
+<%- "import Sidebar from '../smart-components/"+sideBarContent+"';" %>
+<% } %>
+
+
+<% if (type === 'switch'){ %>
+<%- "export default SwitchNavigator(" %>
+<% } else if (type === 'tab') { %>
+<%- "export default TabNavigator(" %>
+<% } else if (type === 'drawer') { %>
+<%- "export default DrawerNavigator(" %>
+<% } else if (type === 'stack') { %>
+<%- "export default StackNavigator(" %>
+<% } %>
+    {
+        <% routes.forEach(route => { %>
+            <%- route.key+":{ screen: "+route.key+"}," %>
+        <% }); %>
+    },
+    {
+        <% if (locals.sideBarContent){ %>
+        <%- "contentComponent: props => <Sidebar {...props} />," %>
+        <% } %>
+        headerMode: 'none'
+    }
+);

@@ -1,0 +1,55 @@
+'use strict';
+
+import React, { Component } from 'react';
+import {
+    View
+} from 'react-native';
+
+import { connect } from 'react-redux';
+import { i18n } from '../locales/i18n';
+import { toJS } from '../utils/immutable_to_js';
+import { loginAsync } from '../actions/actions_authentication';
+import { navigateTo } from '../actions/actions_navigation';
+import { resetErrorStack } from '../actions/actions_error';
+<%- "import Dumb from '../dumb-components/"+key+"';" %>
+
+import { NavigationActions } from 'react-navigation';
+
+
+const mapStateToProps = (state) => {
+  return {
+    labels: {
+      <% labels.forEach(label => { %>
+      <%- label.key+": i18n('"+label.value+"')," %>
+      <% }); %>
+    },
+    flags: {
+      <% flags.forEach(flag => { %>
+      <%- flag.key+": "+flag.value+"," %>
+      <% }); %>
+    },
+    errors: state.getIn(['errors', 'stack'])
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onLoginPress: (id, password) => {
+      dispatch(loginAsync(id, password));
+    },
+    onRegisterPress: () => {
+      dispatch(navigateTo('signup'))
+    },
+    onLostPasswordPress: () => {
+      dispatch(navigateTo('lostpassword'))
+    },
+    resetErrorStack: () => {
+      dispatch(resetErrorStack());
+    }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(toJS(Dumb))

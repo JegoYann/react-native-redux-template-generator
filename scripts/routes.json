@@ -1,0 +1,56 @@
+{
+  "key": "main",
+  "type": "switch",
+  "isRoot": true,
+  "routes": [
+    {
+      "key": "auth",
+      "type": "stack",
+      "routes": [
+        {
+          "key": "login",
+          "type": "screen",
+          "viewKey": "login"
+        },
+        {
+          "key": "signup",
+          "type": "screen",
+          "viewKey": "signup"
+        }
+      ]
+    },
+    {
+      "key": "drawer",
+      "type": "drawer",
+      "sideBarContent": "drawer",
+      "routes": [
+        {
+          "key": "app",
+          "type": "stack",
+          "routes": [
+            {
+              "key": "deliveryFrom",
+              "type": "screen",
+              "viewKey": "delivery_from"
+            },
+            {
+              "key": "deliveryTo",
+              "type": "screen",
+              "viewKey": "delivery_to"
+            },
+            {
+              "key": "deliveryDetails",
+              "type": "screen",
+              "viewKey": "delivery_details"
+            },
+            {
+              "key": "myDeliveries",
+              "type": "screen",
+              "viewKey": "deliveries"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+'use strict';
+
+import React, { Component } from 'react';
+
+import { connect } from 'react-redux';
+import { i18n } from '../locales/i18n';
+import { toJS } from '../utils/immutable_to_js';
+// import { deliveries } from '../actions/actions_deliveries';
+<%- "import Dumb from '../dumb-components/"+key+"';" %>
+
+
+const mapStateToProps = (state) => {
+  return {
+    labels: {
+      <% labels.forEach(label => { %>
+      <%- label.key+": i18n('"+label.value+"')," %>
+      <% }); %>
+    },
+    flags: {
+    },
+    deliveries: state.getIn(['delivery', 'deliveries']),
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(toJS(Dumb))

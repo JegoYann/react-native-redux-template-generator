@@ -1,36 +1,23 @@
 {
-  "name": "generic-react-native-redux",
-  "version": "0.1.0",
-  "private": true,
-  "devDependencies": {
-    "jest-expo": "25.0.0",
-    "react-native-scripts": "1.11.1",
-    "react-test-renderer": "16.2.0"
-  },
-  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "name": "nanogen",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-native-scripts start",
-    "eject": "react-native-scripts eject",
-    "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js"
+    "build": "node ./scripts/build",
+    "serve": "serve ./public"
   },
-  "jest": {
-    "preset": "jest-expo"
-  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "expo": "^25.0.0",
-    "immutable": "^3.8.2",
-    "native-base": "^2.3.9",
-    "react": "16.2.0",
-    "react-native": "0.52.0",
-    "react-native-i18n": "^2.0.12",
-    "react-navigation": "^1.4.0",
-    "react-navigation-redux-helpers": "^1.0.1",
-    "react-redux": "^5.0.7",
-    "redux": "^3.7.2",
-    "redux-immutable": "^4.0.0",
-    "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0"
+    "js-beautify": "^1.7.5"
+  },
+  "devDependencies": {
+    "ejs": "^2.5.7",
+    "fs-extra": "^4.0.2",
+    "glob": "^7.1.2",
+    "serve": "^6.0.6",
+    "standard": "^10.0.3"
   }
 }
