@@ -33,11 +33,11 @@ export default class Screen extends Component {
         return (
             <Container>
                 <Header>
-                    <Left />
+                    {/* <Left /> */}
                     <Body>
                         <Title>{this.props.labels.title}</Title>
                     </Body>
-                    <Right />
+                    {/* <Right /> */}
                 </Header>
                 <Content>
                     <StyleProvider style={{ ...getTheme({ iconFamily: "Entypo" }) }}>
@@ -50,15 +50,21 @@ export default class Screen extends Component {
                             <Icon name='menu' />
                         </Button>
                     </StyleProvider>
-                    {this.props.deliveries.map(element => {
+                    {this.props.items.map(element => {
+                        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
                         return <Card key={index++}>
                             <CardItem>
                                 <Body>
-                                    <Text>Date: {element.date.toString()}</Text>
-                                    <Text>From: {element.from.name}</Text>
-                                    <Text>To: {element.to.name}</Text>
-                                    <Text>Price: {element.price}</Text>
-                                    <Text>Description: {element.description}</Text>
+                                    <Text style={{fontWeight:'bold'}}>Date:</Text>
+                                    <Text>{element.date.toLocaleDateString('fr-FR', options)}</Text>
+                                    <Text style={{fontWeight:'bold'}}>From:</Text>
+                                    <Text>{element.from}</Text>
+                                    <Text style={{fontWeight:'bold'}}>To:</Text>
+                                    <Text>{element.to}</Text>
+                                    <Text style={{fontWeight:'bold'}}>Price:</Text>
+                                    <Text>{element.price}€</Text>
+                                    <Text style={{fontWeight:'bold'}}>Description:</Text>
+                                    <Text>{element.description}</Text>
                                 </Body>
                             </CardItem>
                         </Card>

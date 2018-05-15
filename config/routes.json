@@ -1,0 +1,48 @@
+{
+  "key": "main",
+  "type": "switch",
+  "routes": [
+    {
+      "key": "auth",
+      "type": "stack",
+      "routes": [
+        {
+          "key": "login",
+          "type": "screen",
+          "viewKey": "login"
+        },
+        {
+          "key": "signup",
+          "type": "screen",
+          "viewKey": "signup"
+        },
+        {
+          "key": "lostpassword",
+          "type": "screen",
+          "viewKey": "lostpassword"
+        }
+      ]
+    },
+    {
+      "key": "home",
+      "type": "tab",
+      "routes": [
+        {
+          "key": "list",
+          "type": "screen",
+          "viewKey": "list"
+        },
+        {
+          "key": "form",
+          "type": "screen",
+          "viewKey": "form"
+        },
+        {
+          "key": "map",
+          "type": "screen",
+          "viewKey": "map"
+        }
+      ]
+    }
+  ]
+}

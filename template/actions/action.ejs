@@ -1,0 +1,52 @@
+'use strict';
+//
+// Example of sync action
+// Get local product list
+// export function createDelivery(price, description) {
+//     return {
+//         type: 'CREATE_DELIVERY',
+//         price,
+//         description,
+//     }
+// }
+//
+// Example of async action using redux thunk
+// Get remote product list
+// export function fetchDeliveries(query) {
+//     return dispatch => {
+//         fetch(`127.0.0.1:3000/deliveries?`+query)
+//             .catch(error => {
+//                 dispatch(action_fail('Network error'))
+//             })
+//             .then(body => {
+//                 return body.json();
+//             })
+//             .then(response => {
+//                 dispatch(action_success(response));
+//             })
+//             .catch(error => {
+//                 dispatch(action_fail(error))
+//             });
+//     }
+// };
+// function action_success(products) {
+//     return {
+//         type: 'SET_DELIVERY',
+//         products
+//     };
+// };
+// function action_fail(error) {
+//     return {
+//         type: 'ADD_ERROR',
+//         message: error.message
+//     };
+// };
+//
+
+<% actionCreators.forEach(action => { %>
+<%- "export function "+action+"(parameters) {" %>
+    <%- "return {" %>
+        <%- "// TODO Add your own action" %>
+    <%- "}" %>
+<%- "}" %>
+<% }); %>

@@ -32,11 +32,11 @@ export default class Screen extends Component {
         return (
             <Container>
                 <Header>
-                    <Left />
+                    {/* <Left /> */}
                     <Body>
                         <Title>{this.props.labels.title}</Title>
                     </Body>
-                    <Right />
+                    {/* <Right /> */}
                 </Header>
                 <Content padder>
                     <Form>

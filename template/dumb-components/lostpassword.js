@@ -25,7 +25,17 @@ export default class Screen extends Component {
         };
     }
 
-    componentDidMount() {
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors.length > 0) {
+            nextProps.errors.forEach((error) => {
+                Toast.show({
+                    text: error,
+                    position: 'bottom',
+                    buttonText: 'Okay'
+                });
+            });
+            this.props.resetErrorStack();
+        }
     }
 
     render() {
@@ -39,40 +49,28 @@ export default class Screen extends Component {
                     {/* <Right /> */}
                 </Header>
                 <Content padder>
+                    <Text>{this.props.labels.help}</Text>
                     <Form>
                         <Item floatingLabel>
-                            <Label>{this.props.labels.price}</Label>
-                            <Input keyboardType='numeric' onChangeText={this.onChangePrice.bind(this)} />
-                        </Item>
-                        <Item floatingLabel last>
-                            <Label>{this.props.labels.description}</Label>
-                            <Input onChangeText={this.onChangeDescription.bind(this)} />
+                            <Label>{this.props.labels.email}</Label>
+                            <Input onChangeText={this.onChangeEmail.bind(this)} />
                         </Item>
                     </Form>
-                    <Button block onPress={this.onSubmitPress.bind(this)}>
-                        <Text>{this.props.labels.button}</Text>
+                    <Button block onPress={this.onSendPress.bind(this)}>
+                        <Text>{this.props.labels.sendButton}</Text>
                     </Button>
                 </Content>
             </Container>
         );
     }
 
-    onChangePrice(text) {
+    onChangeEmail(text) {
         this.setState({
-            price: text
+            email: text
         });
     }
 
-    onChangeDescription(text) {
-        this.setState({
-            description: text
-        });
-    }
-
-    onSubmitPress() {
-        this.props.onSubmit({
-            price: this.state.price,
-            description: this.state.description
-        });
+    onSendPress() {
+        this.props.onSendPress(this.state.email);
     }
 }

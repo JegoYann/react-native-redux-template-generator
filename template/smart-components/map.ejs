@@ -5,9 +5,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { i18n } from '../locales/i18n';
 import { toJS } from '../utils/immutable_to_js';
-import { fetchAddresses, selectFromLocation } from '../actions/actions_delivery';
-import { navigateTo } from '../actions/actions_navigation';
+import { navigateTo } from '../actions/navigation';
 <%- "import Dumb from '../dumb-components/"+key+"';" %>
+// TODO Import your own action creators
+// import { fetchAddresses, selectFromLocation } from '../actions/actions_delivery';
 
 
 const mapStateToProps = (state) => {
@@ -19,19 +20,23 @@ const mapStateToProps = (state) => {
     },
     flags: {
     },
-    predictions: state.getIn(['delivery', 'predictions']),
-    mapKey: <%- "'"+mapKey+"'," %>
+    // TODO Add your prediction state
+    // predictions: state.getIn(['map', 'predictions']) || [],
+    predictions: [], 
+    mapKey: <%- "'"+mapKey+"'" %> || "0",
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchAddresses: (value, mapKey) => {
-      dispatch(fetchAddresses(value, mapKey));
+      // TODO Dispatch your own action
+      // dispatch(fetchAddresses(value, mapKey));
     },
     selectLocation: (location) => {
-      dispatch(selectFromLocation(location));
-      dispatch(navigateTo('deliveryTo'));
+      // TODO Dispatch your own action
+      // dispatch(selectFromLocation(location));
+      // dispatch(navigateTo('deliveryTo'));
     }
   }
 }

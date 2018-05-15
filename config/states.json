@@ -1,0 +1,19 @@
+[
+  {
+    "key": "delivery",
+    "actionTypes": [
+      "GET_PREDICTIONS",
+      "SELECT_FROM_LOCATION",
+      "SELECT_TO_LOCATION",
+      "CREATE_DELIVERY"
+    ],
+    "actionCreators": [
+      "fetchAddresses",
+      "prediction_success",
+      "prediction_fail",
+      "selectFromLocation",
+      "selectToLocation",
+      "createDelivery"
+    ]
+  }
+]

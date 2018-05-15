@@ -8,9 +8,9 @@ import {
 import { connect } from 'react-redux';
 import { i18n } from '../locales/i18n';
 import { toJS } from '../utils/immutable_to_js';
-import { loginAsync } from '../actions/actions_authentication';
-import { navigateTo } from '../actions/actions_navigation';
-import { resetErrorStack } from '../actions/actions_error';
+import { navigateTo } from '../actions/navigation';
+import { loginAsync } from '../actions/authentication';
+import { resetErrorStack } from '../actions/error';
 <%- "import Dumb from '../dumb-components/"+key+"';" %>
 
 import { NavigationActions } from 'react-navigation';
@@ -28,7 +28,7 @@ const mapStateToProps = (state) => {
       <%- flag.key+": "+flag.value+"," %>
       <% }); %>
     },
-    errors: state.getIn(['errors', 'stack'])
+    errors: state.getIn(['errors', 'stack']) || [],
   }
 }
 

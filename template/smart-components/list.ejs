@@ -5,8 +5,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { i18n } from '../locales/i18n';
 import { toJS } from '../utils/immutable_to_js';
-// import { deliveries } from '../actions/actions_deliveries';
 <%- "import Dumb from '../dumb-components/"+key+"';" %>
+// TODO Import your own action creators
+// import { fetchDeliveries } from '../actions/delivery';
 
 
 const mapStateToProps = (state) => {
@@ -18,7 +19,9 @@ const mapStateToProps = (state) => {
     },
     flags: {
     },
-    deliveries: state.getIn(['delivery', 'deliveries']),
+    // TODO Add your list
+    // items: state.getIn(['delivery', 'deliveries']),
+    items: [{date: new Date(), price: 10, description: 'Une petite boite fragile de 500g', from: 'paris', to:'lyon'}, {date: new Date(), price: 20, description: 'Une pizza napolitaine à garder fraiche', from: 'marseille', to: 'brest'}],
   }
 }
 

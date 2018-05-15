@@ -1,0 +1,20 @@
+'use strict';
+
+import { combineReducers } from 'redux-immutable';
+import NavReducer from './navigation';
+import AuthReducer from './authentication';
+import ErrorReducer from './error';
+<% states.forEach(state => { %>
+<%- "import "+state.key+" from './"+state.key+"';" %>
+<% }); %>
+
+const reducers = combineReducers({
+    nav: NavReducer,
+    auth: AuthReducer,
+    errors: ErrorReducer,
+    <% states.forEach(state => { %>
+    <%- state.key+":"+state.key+"," %>
+    <% }); %>
+})
+
+export default reducers;

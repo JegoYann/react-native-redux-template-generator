@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node ./scripts/build",
-    "serve": "serve ./public"
+    "build": "node ./build",
+    "quick": "./generate.sh"
   },
   "keywords": [],
   "author": "",

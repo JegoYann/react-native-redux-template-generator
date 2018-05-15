@@ -1,0 +1,42 @@
+'use strict';
+
+import Immutable from 'immutable';
+
+var initstate = Immutable.fromJS({
+  // TODO Add your own initial state using ImmutableJs !
+  // products: [],
+});
+
+const StateReducer = (state = initstate, action) => {
+  switch (action.type) {
+
+    // Example of action type
+    // /!\ Always use ImmutableJS method to manipulate the state.
+    // case 'CREATE_DELIVERY':
+    //   let products = state
+    //   .get('products')
+    //   .push(action.product);
+    //   return state.set('products', products);
+    // break;
+    //
+    // case 'SET_DELIVERY':
+    //   return state.merge({
+    //     products: action.products
+    //   });
+    // break;
+
+      <% actionTypes.forEach(action => { %>
+      <%- "case '"+action+"':" %>
+      <%- "return state.merge({" %>
+      <%- "  // TODO Add your own state update" %>
+      <%- "});" %>
+      <%- "break;" %>
+      <% }); %>
+
+    default:
+      return state;
+      break;
+  }
+}
+
+export default StateReducer;

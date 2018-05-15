@@ -1,0 +1,43 @@
+{
+  "key": "drawer",
+  "type": "drawer",
+  "sideBarContent": "drawer",
+  "routes": [
+    {
+      "key": "home",
+      "type": "stack",
+      "routes": [
+        {
+          "key": "login",
+          "type": "screen",
+          "viewKey": "login"
+        },
+        {
+          "key": "signup",
+          "type": "screen",
+          "viewKey": "signup"
+        },
+        {
+          "key": "lostpassword",
+          "type": "screen",
+          "viewKey": "lostpassword"
+        },
+        {
+          "key": "map",
+          "type": "screen",
+          "viewKey": "map"
+        },
+        {
+          "key": "list",
+          "type": "screen",
+          "viewKey": "list"
+        },
+        {
+          "key": "form",
+          "type": "screen",
+          "viewKey": "form"
+        }
+      ]
+    }
+  ]
+}
